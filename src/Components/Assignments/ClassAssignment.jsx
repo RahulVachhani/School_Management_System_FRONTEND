@@ -9,7 +9,6 @@ function ClassAssignment() {
     const [data, setData] = useState([])
     const [assignmentDetails, setAssignmentDetails] = useState(null)
     const [feedback, setFeedback] = useState({})
-
     const AllAssignment = async () => {
         try {
             const res = await api.get(`http://127.0.0.1:8000/api/class/assignement/${cid}/?subject_id=${sid}`)
@@ -37,7 +36,10 @@ function ClassAssignment() {
     }
 
     const handleFeedbackChange = (studentId, value) => {
-        setFeedback({"student_id":studentId, "feedback":value})
+        setFeedback({"student_id":studentId, "feedback":value })
+    }
+    const handleGradeChange = (studentId, value) => {
+        setFeedback({...feedback,"grade":value})
     }
     const submitFeedback = async(aid)=>{
         try{
@@ -127,6 +129,7 @@ function ClassAssignment() {
                                     {student.feedback && (
                                         <span className="text-sm text-green-500 font-medium">Feedback: {student.feedback}</span>
                                     )}
+                                    
                                </div>
                                 {/* Feedback input */}
                                 <div className="mt-2">
@@ -136,6 +139,14 @@ function ClassAssignment() {
                                         onChange={(e) => handleFeedbackChange(student.student_id, e.target.value)}
                                         className="w-full px-2 py-1 border rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
                                     />
+                                    <select  onChange={(e) => handleGradeChange(student.student_id,e.target.value)}>
+                                        <option value="" disabled>Select Grade</option>
+                                        <option value="A" >A</option>
+                                        <option value="B" >B</option>
+                                        <option value="C" >C</option>
+                                        <option value="D" >D</option>
+                                        <option value="F" >F</option>
+                                    </select>
                                     <button
                                         onClick={() => submitFeedback(assignmentDetails.id)}
                                         className="mt-2 bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition"

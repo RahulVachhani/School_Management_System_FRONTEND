@@ -23,8 +23,8 @@ import ShowAttendance from "./Components/Attendance/ShowAttendance";
 import GroupChat from "./Components/GroupChat/GroupChatApp";
 import AddStudentInClass from "./Components/Classes/AddStudentInClass";
 import RemoveStudentFromClass from "./Components/Classes/RemoveStudentFromClass";
-
-
+import GradeDownload from "./Download"
+import NotificationList from "./Notification";
 
 const UserContext = createContext();
 
@@ -238,6 +238,22 @@ function App() {
                     element={
                       <ProtectedRoutes>
                         <RemoveStudentFromClass />
+                      </ProtectedRoutes>
+                    }
+                  />
+                  <Route
+                    path="/grade-download/:cid"
+                    element={
+                      <ProtectedRoutes>
+                        <GradeDownload />
+                      </ProtectedRoutes>
+                    }
+                  />
+                   <Route
+                    path="/notification"
+                    element={
+                      <ProtectedRoutes>
+                        <NotificationList />
                       </ProtectedRoutes>
                     }
                   />

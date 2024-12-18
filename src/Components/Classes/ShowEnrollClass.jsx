@@ -38,7 +38,7 @@ function ShowEnrollClass() {
                     <Spinner />
                 </div>
             )}
-            {classes.length > 0 ?  (
+            
                 <div 
                     key={classes.id} 
                     onClick={() => {
@@ -50,7 +50,7 @@ function ShowEnrollClass() {
                     </h3>
                     
                 </div>
-            ): "Not any classes found"}
+            
         </div>
     )
 }

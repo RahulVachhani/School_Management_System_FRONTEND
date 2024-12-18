@@ -16,7 +16,7 @@ function Topbar() {
       {/* User Profile Section */}
       <div className="flex items-center space-x-4">
         {/* Notification Icon */}
-        <button className="relative p-2 rounded-full hover:bg-gray-100">
+        <button onClick={()=> navigate(`/notification`)} className="relative p-2 rounded-full hover:bg-gray-100">
           <AiOutlineBell className="text-xl text-gray-600" />
           <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
         </button>

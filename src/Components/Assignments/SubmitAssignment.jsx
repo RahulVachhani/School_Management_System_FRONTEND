@@ -86,7 +86,7 @@ function SubmitAssignment() {
                         id="file-upload"
                         type="file"
                         onChange={(e) => setSubmissionFile(e.target.files[0])}
-                        disabled={status.assignment_status === "Submitted"}
+                        disabled={status.assignment_status === "submitted" || status.assignment_status === 'graded'}
                         className="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm 
                 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
@@ -95,11 +95,11 @@ function SubmitAssignment() {
                 {/* Submit Button */}
                 <button
                     onClick={submitAssignment}
-                    disabled={status.assignment_status === 'Submitted'}
+                    disabled={status.assignment_status === 'Submitted' || status.assignment_status === 'graded'}
                     className={`w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white 
                 bg-indigo-600 hover:bg-indigo-700
                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 
-                ${status.assignment_status === 'Submitted' ? 'opacity-50 cursor-not-allowed' : ''}`}
+                ${status.assignment_status === 'submitted' || status.assignment_status === 'graded'  ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     Submit
                 </button>
@@ -109,13 +109,13 @@ function SubmitAssignment() {
             <div className="text-center space-y-2">
                 <h3 className="text-lg font-semibold text-gray-700">Status:</h3>
                 <p
-                    className={`text-lg ${status.assignment_status === 'Submitted' ? 'text-green-600' : 'text-red-600'
+                    className={`text-lg ${status.assignment_status === 'submitted' || status.assignment_status === 'graded' ? 'text-green-600' : 'text-red-600'
                         }`}
                 >
                     {status.assignment_status}
                 </p>
                 <p>
-                    {status.assignment_status === 'Submitted' && "You have already submitted your assignment."}
+                    {(status.assignment_status === 'submitted' || status.assignment_status === 'graded')  && "You have already submitted your assignment."}
                 </p>
             </div>
 

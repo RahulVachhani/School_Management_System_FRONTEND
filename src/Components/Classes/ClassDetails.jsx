@@ -54,16 +54,25 @@ function Details(props) {
                             <div className="flex gap-4 mb-4">
                                 <button
                                     onClick={() => navigate(`/add-student-class/${id}`)} // Adjust the navigation to your route for adding students
-                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-                                >
+                                    className="inline-flex  rounded-lg items-center px-4 py-2 text-sm font-medium text-green-900 bg-white border border-gray-400  hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-green-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-green-500 dark:focus:text-white">
                                     Add Student
                                 </button>
                                 <button
                                     onClick={() => navigate(`/remove-student/${id}`)} // Adjust the navigation to your route for removing students
-                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-                                >
+                                    className="inline-flex  rounded-lg items-center px-4 py-2 text-sm font-medium text-red-900 bg-white border border-gray-400  hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-2 focus:ring-red-700 focus:text-red-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-red-500 dark:focus:text-white">
                                     Remove Student
                                 </button>
+                                <button 
+                                onClick={() => navigate(`/grade-download/${id}`)} 
+                                type="button" 
+                                className="inline-flex  rounded-lg items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-400  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+    <svg class="w-3 h-3 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M14.707 7.793a1 1 0 0 0-1.414 0L11 10.086V1.5a1 1 0 0 0-2 0v8.586L6.707 7.793a1 1 0 1 0-1.414 1.414l4 4a1 1 0 0 0 1.416 0l4-4a1 1 0 0 0-.002-1.414Z"/>
+      <path d="M18 12h-2.55l-2.975 2.975a3.5 3.5 0 0 1-4.95 0L4.55 12H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Zm-3 5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+    </svg>
+    Downloads
+  </button>
+                                
                             </div>
                         )}
                         {data && data.students.data.length > 0 ? (
@@ -117,15 +126,13 @@ function Details(props) {
                                             {role === "teacher" && (
                                                 <button
                                                     onClick={() => navigate(`/create-assignment/${subject.id}/${id}/`)}
-                                                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-                                                >
+                                                    className="inline-flex  rounded-lg items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-400  hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                                     Create Assignment
                                                 </button>
                                             )}
                                             <button
                                                 onClick={() => navigate(`/class-assignment/${id}/${subject.id}/`)}
-                                                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
-                                            >
+                                                className="inline-flex  rounded-lg items-center px-4 py-2 text-sm font-medium text-green-900 bg-white border border-gray-400  hover:bg-gray-100 hover:text-green-700 focus:z-10 focus:ring-2 focus:ring-green-700 focus:text-green-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-green-500 dark:focus:text-white">
                                                 Show Assignments
                                             </button>
                                         </div>
@@ -138,6 +145,8 @@ function Details(props) {
                     </div>
                 </div>
             </div>
+            
+            
         </>
     )
 }
