@@ -6,7 +6,7 @@ import Spinner from '../../Spinner';
 
 function ShowEnrollClass() {
     const navigate = useNavigate(); // Use the useNavigate hook
-    const { data } = useUser()
+    const { data,getData } = useUser()
     const [classes, setClasses] = useState([])
     const [loading, setLoading] = useState(false)
 
@@ -28,7 +28,9 @@ function ShowEnrollClass() {
     }
 
     useEffect(() => {
+        getData()
         getAllEnrollClass()
+        
     },[])
 
     return (

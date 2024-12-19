@@ -33,8 +33,8 @@ function GroupChat() {
                     <div
                         key={msg.id}
                         className={`flex ${msg.sender.username === messages.currentUser
-                                ? 'justify-end' // Align right for current user
-                                : 'justify-start' // Align left for others
+                                ? 'justify-end' 
+                                : 'justify-start' 
                             }`}
                     >
                         <div
