@@ -180,7 +180,7 @@ function App() {
                     }
                   />
                   <Route
-                    path="/submit-assignment/:sid/:aid"
+                    path="/submit-assignment/:sid/:aid/:ver"
                     element={
                       <ProtectedRoutes>
                         <SubmitAssignment />
