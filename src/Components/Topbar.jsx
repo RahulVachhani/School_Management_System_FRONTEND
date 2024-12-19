@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineBell } from "react-icons/ai";
 import api from "../../api";
 import { useUser } from "../App";
 import { useNavigate } from "react-router-dom";
-
+import { useNotifications } from "../NotificationContext";
 
 function Topbar() {
-  const {data,role} = useUser()
+  const { unReadMessageCount, fetchNotifications, readNotification } = useNotifications();
+
+  const { data, role } = useUser()
   const navigate = useNavigate()
   return (
     <div className="w-full flex items-center justify-between bg-white shadow px-6 py-3">
@@ -16,18 +18,21 @@ function Topbar() {
       {/* User Profile Section */}
       <div className="flex items-center space-x-4">
         {/* Notification Icon */}
-        <button onClick={()=> navigate(`/notification`)} className="relative p-2 rounded-full hover:bg-gray-100">
+        <button onClick={async () => {
+          await readNotification(); // Mark all notifications as read
+          await fetchNotifications(); navigate(`/notification`)
+        }} className="relative p-2 rounded-full hover:bg-gray-100">
           <AiOutlineBell className="text-xl text-gray-600" />
-          <span className="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"></span>
+          {unReadMessageCount != 0 && (<span className="absolute top-0 right-0 h-5 w-4 bg-red-500 rounded-full text-white">{unReadMessageCount}</span>)}
         </button>
 
         {/* User Profile */}
         <div className="flex items-center space-x-2" >
-            
+
           <img
-          onClick={()=> {
-            navigate('/group-chat')
-          }}
+            onClick={() => {
+              navigate('/group-chat')
+            }}
             src="https://via.placeholder.com/40"
             alt="User"
             className="h-10 w-10 rounded-full border"

@@ -25,6 +25,7 @@ import AddStudentInClass from "./Components/Classes/AddStudentInClass";
 import RemoveStudentFromClass from "./Components/Classes/RemoveStudentFromClass";
 import GradeDownload from "./Download"
 import NotificationList from "./Notification";
+import NotificationProvide from "./NotificationContext";
 
 const UserContext = createContext();
 
@@ -77,7 +78,10 @@ function App() {
 
   return (
     <>
+       
       <UserContext.Provider value={{ ...userState, getData, setUserState }}>
+              <NotificationProvide>
+
         <div className="flex flex-col md:flex-row">
           <Router>
 
@@ -233,7 +237,7 @@ function App() {
                       </ProtectedRoutes>
                     }
                   />
-                   <Route
+                  <Route
                     path="/remove-student/:cid"
                     element={
                       <ProtectedRoutes>
@@ -249,7 +253,8 @@ function App() {
                       </ProtectedRoutes>
                     }
                   />
-                   <Route
+
+                  <Route
                     path="/notification"
                     element={
                       <ProtectedRoutes>
@@ -262,6 +267,7 @@ function App() {
             </div>
           </Router>
         </div>
+        </NotificationProvide>
 
       </UserContext.Provider>
     </>

@@ -1,23 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { useUser } from './App';
 import api from '../api';
+import { useNotifications } from './NotificationContext';
+
+
 
 function NotificationList() {
-    const [notifications, setNotifications] = useState([]);
-    const {data} = useUser()
-    // Fetch notifications from the API
-    const fetchNotifications = async () => {
-        try {
-            const response = await api.get(`api/school/notification/${data.id}/`); 
-            setNotifications(response.data);
-        } catch (error) {
-            console.log('Error fetching notifications:', error);
-        }
-    };
 
-    useEffect(() => {
-        fetchNotifications(); // Fetch notifications when the component mounts
-    }, []);
+    const { notifications } = useNotifications();
 
     return (
         <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg mx-auto">
@@ -35,12 +25,13 @@ function NotificationList() {
                         >
                             <p className="text-gray-800">{notification.message}</p>
                             <span className="text-sm text-gray-500">
-                                {notification.read ? 'Read' : 'Unread'}
+                                {notification.read ? 'Readed' : 'Unread'}
                             </span>
                         </li>
                     ))}
                 </ul>
             )}
+
         </div>
     );
 }
