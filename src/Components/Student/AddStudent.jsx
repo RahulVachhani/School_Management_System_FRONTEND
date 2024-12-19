@@ -3,6 +3,7 @@ import api from '../../../api';
 
 
 function AddStudent() {
+    const [successMessage, setSuccessMessage] = useState("") // State for success message
     // Form state
     const [formData, setFormData] = useState({
         username: "",
@@ -21,11 +22,15 @@ function AddStudent() {
         setFormData({ ...formData, [name]: value });
     };
 
-    const addStudent = async() => {
-        const res = await api.post('api/all/students/',{
+    const addStudent = async () => {
+        const res = await api.post('api/all/students/', {
             ...formData
         })
-        console.log("res :",res)
+        setSuccessMessage('Successfully created student')
+        setTimeout(()=>{
+            setSuccessMessage("")
+        },4000)
+        console.log("res :", res)
     }
 
     return (
@@ -139,6 +144,11 @@ function AddStudent() {
                     </button>
                 </div>
             </div>
+            {successMessage && (
+                <div className="mt-4 p-4 bg-green-100 border-l-4 border-green-500 text-green-700">
+                    {successMessage}
+                </div>
+            )}
         </div>
     )
 }

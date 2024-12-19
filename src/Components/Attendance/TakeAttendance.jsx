@@ -86,7 +86,7 @@ function TakeAttendance() {
 
     return (
         <>
-        
+
             <div className="bg-gray-100 min-h-screen p-8">
                 {/* Header */}
                 <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
@@ -155,8 +155,7 @@ function TakeAttendance() {
                         </div>
                     )}
                     {successMessage && (
-
-                        <div className="mt-4 text-green-600 text-center font-medium">
+                        <div className="mt-4 p-4 bg-green-100 border-l-4 border-green-500 text-green-700">
                             {successMessage}
                         </div>
                     )}

@@ -24,7 +24,6 @@ function AddStudentInClass() {
         setLoading(true)
         console.log('selected Student :', selectedStudent)
         console.log('class ID :', cid)
-        setSuccessMessage("")
         try {
             const res = await api.post(`api/school/student/without/class/`, {
                 "student_id": selectedStudent,
@@ -50,11 +49,11 @@ function AddStudentInClass() {
     }, [])
     return (
         <div className="p-6 max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10">
-             {loading && <div className="flex justify-center mb-1">
+            {loading && <div className="flex justify-center mb-1">
                 <Spinner />
             </div>}
             <h2 className="text-xl font-bold text-gray-800 mb-4">Add Student to Class</h2>
-           
+
             {students.length === 0 && (
                 <p className="text-gray-600">No students available to add to the class.</p>
             )}
@@ -89,8 +88,7 @@ function AddStudentInClass() {
                 </div>
             )}
             {successMessage && (
-                
-                <div className="mt-4 text-green-600 text-center font-medium">
+                <div className="mt-4 p-4 bg-green-100 border-l-4 border-green-500 text-green-700">
                     {successMessage}
                 </div>
             )}
